@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "cost-calculator",
-    "slug": "cost-calculator",
+    "name": "FeeMaster",
+    "slug": "FeeMaster",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,14 +22,14 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.walidislam.costcalculator"
+      "package": "com.netlexer.FeeMaster"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "25e5282f-f147-492e-96df-7e74367fe4ef"
+        "projectId": "87e92f84-c846-41c1-b202-6ecc2427ae29"
       }
     }
   }

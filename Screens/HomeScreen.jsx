@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, TextInput, Image, Modal, TouchableOpacity, Alert, Pressable } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Image, Modal, TouchableOpacity, Alert, Pressable, Linking } from 'react-native'
 import { Entypo } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { Foundation } from '@expo/vector-icons';
 
 
 const paymentType = [
@@ -52,22 +53,168 @@ const HomeScreen = () => {
     return (
         <View style={styles.container}>
 
-            <View style={styles.centeredView}>
+            <View>
                 <Modal
                     animationType="slide"
                     transparent={true}
                     visible={modalVisible}
                     onRequestClose={() => {
-                        Alert.alert('Modal has been closed.');
                         setModalVisible(!modalVisible);
-                    }}>
-                    <View style={styles.centeredView}>
+                    }}
+                >
+                    <View>
                         <View style={styles.modalView}>
-                            <Text style={styles.modalText}>Information has been collected from service provider's official website.FeeMaster is not responsible for any kind of misinformation.</Text>
-                            <TouchableOpacity
-                                onPress={() => setModalVisible(!modalVisible)}>
-                                <AntDesign name="close" size={24} color="red" />
-                            </TouchableOpacity>
+                            <View style={{ marginLeft: 260, marginBottom: 10 }}>
+                                <TouchableOpacity
+                                    onPress={() => setModalVisible(!modalVisible)}
+                                >
+                                    <AntDesign name="closesquare" size={24} color="red" />
+                                </TouchableOpacity>
+                            </View>
+
+                            <View>
+                                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+                                    Information Source
+                                </Text>
+
+                                <Text style={{ fontSize: 14 }}>
+                                    Last Update: 26-06-2023
+                                </Text>
+
+                                <View style={{ borderBottomColor: 'gray', borderBottomWidth: 1, marginBottom: 10 }} />
+
+                                <Text style={styles.modalText}>
+                                    Information has been collected from service provider's official website.FeeMaster is not responsible for any kind of misinformation.
+                                </Text>
+                            </View>
+
+                            <View>
+                                <Text>Information source has been hyperlinked with the service provider name given bellow. Tap on the Service Provider name to verify the information.</Text>
+                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 10 }}>
+
+                                    <TouchableOpacity onPress={() => Linking.openURL('https://www.bkash.com/en/help/charge-calculator')}>
+                                        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Bkash</Text>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity onPress={() => Linking.openURL('https://nagad.com.bd/limit-charges')}>
+                                        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Nagad</Text>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity onPress={() => Linking.openURL('https://www.dutchbanglabank.com/rocket/faq.html')}>
+                                        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Rocket</Text>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity onPress={() => Linking.openURL('https://www.upaybd.com/limits-and-charges')}>
+                                        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Upay</Text>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity onPress={() => Linking.openURL('https://trustaxiatapay.com/faq.php')}>
+                                        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Tap</Text>
+                                    </TouchableOpacity>
+
+                                </View>
+                            </View>
+
+                            <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginBottom: 20 }} />
+
+
+
+                            <View>
+                                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+                                    About Development Team
+                                </Text>
+
+                                <View style={{ borderBottomColor: 'gray', borderBottomWidth: 1, marginBottom: 10 }} />
+
+                                <Text style={{ fontWeight: 'bold' }}>
+                                    Mohammad Sazzad Hossain
+                                </Text>
+
+                                <Text>
+                                    Product Inventor & Manager
+                                </Text>
+
+                                <View style={{ flexDirection: 'row' }}>
+                                    <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/in/sazzadraju/')}>
+                                        <AntDesign
+                                            name="linkedin-square"
+                                            size={25}
+                                            color="black"
+                                            style={{ marginRight: 5, marginTop: 5 }}
+                                        />
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity onPress={() => Linking.openURL('https://sazzadraju.com/')}>
+                                        <Foundation
+                                            name="web"
+                                            size={25}
+                                            color="black"
+                                            style={{ marginLeft: 5, marginTop: 5 }}
+                                        />
+                                    </TouchableOpacity>
+                                </View>
+
+                                <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginBottom: 10, marginTop: 10 }} />
+
+                                <Text style={{ fontWeight: 'bold' }}>
+                                    Mohammad Sohrab Hossain
+                                </Text>
+
+                                <Text>
+                                    Frontend Developer
+                                </Text>
+
+                                <View style={{ flexDirection: 'row' }}>
+                                    <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/in/sohrab09/')}>
+                                        <AntDesign
+                                            name="linkedin-square"
+                                            size={25}
+                                            color="black"
+                                            style={{ marginRight: 5, marginTop: 5 }}
+                                        />
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity onPress={() => Linking.openURL('https://github.com/sohrab09')}>
+                                        <AntDesign
+                                            name="github"
+                                            size={24}
+                                            color="black"
+                                            style={{ marginLeft: 5, marginTop: 5 }}
+                                        />
+                                    </TouchableOpacity>
+                                </View>
+
+                                <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginBottom: 10, marginTop: 10 }} />
+
+                                <Text style={{ fontWeight: 'bold' }}>
+                                    Ferdous Ahmed Khan
+                                </Text>
+
+                                <Text>
+                                    Backend Developer
+                                </Text>
+
+                                <View style={{ flexDirection: 'row' }}>
+                                    <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/in/ferdousahmedkhan/')}>
+                                        <AntDesign
+                                            name="linkedin-square"
+                                            size={25}
+                                            color="black"
+                                            style={{ marginRight: 5, marginTop: 5 }}
+                                        />
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity onPress={() => Linking.openURL('https://github.com/ferdous-ahmed-khan ')}>
+                                        <AntDesign
+                                            name="github"
+                                            size={24}
+                                            color="black"
+                                            style={{ marginLeft: 5, marginTop: 5 }}
+                                        />
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+
                         </View>
                     </View>
                 </Modal>
@@ -85,7 +232,13 @@ const HomeScreen = () => {
                     padding: 10
                 }}
             >
-                <Text style={styles.text}>FeeMaster</Text>
+                <Image
+                    style={{
+                        width: 200,
+                        height: 50
+                    }}
+                    source={require('../assets/logo.png')}
+                />
                 <TouchableOpacity onPress={() => setModalVisible(true)}
                 >
                     <Entypo
@@ -163,11 +316,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         paddingVertical: 10,
         fontSize: 18,
-        color: '#00008B',
+        color: '#0CBF6F',
     },
     input: {
         borderWidth: 1,
-        borderColor: '#34b2fc',
+        borderColor: '#0CBF6F',
         borderRadius: 7,
         padding: 3,
         fontSize: 20,
@@ -180,7 +333,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         margin: 10,
-        backgroundColor: '#00008B',
+        backgroundColor: '#0CBF6F',
         borderRadius: 5,
     },
     header: {
@@ -199,9 +352,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         paddingVertical: 10,
         textAlign: 'center',
-        backgroundColor: '#e6eff8',
+        backgroundColor: '#ddfff3',
         borderRadius: 5,
-        borderColor: '#34b2fc',
+        borderColor: '#0CBF6F',
         borderWidth: 1,
         fontSize: 12,
         width: 70,
@@ -221,7 +374,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 20,
         padding: 35,
-        alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -239,6 +391,5 @@ const styles = StyleSheet.create({
     },
     modalText: {
         marginBottom: 15,
-        textAlign: 'center',
     },
 })
