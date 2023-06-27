@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, TextInput, Image, Modal, TouchableOpacity, Alert, Pressable, Linking } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Image, Modal, TouchableOpacity, Alert, Pressable, Linking, KeyboardAvoidingView } from 'react-native'
 import { Entypo } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { Foundation } from '@expo/vector-icons';
@@ -64,7 +64,7 @@ const HomeScreen = () => {
                 >
                     <View>
                         <View style={styles.modalView}>
-                            <View style={{ marginLeft: 260, marginBottom: 10 }}>
+                            <View style={{ marginLeft: 250, marginBottom: 10 }}>
                                 <TouchableOpacity
                                     onPress={() => setModalVisible(!modalVisible)}
                                 >
@@ -131,7 +131,7 @@ const HomeScreen = () => {
                                 </Text>
 
                                 <Text>
-                                    Product Inventor & Manager
+                                    Product Planner & Manager
                                 </Text>
 
                                 <View style={{ flexDirection: 'row' }}>
@@ -161,7 +161,7 @@ const HomeScreen = () => {
                                 </Text>
 
                                 <Text>
-                                    Frontend Developer
+                                    Frontend Developer - Lead Developer
                                 </Text>
 
                                 <View style={{ flexDirection: 'row' }}>
@@ -228,7 +228,7 @@ const HomeScreen = () => {
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    marginTop: 50,
+                    marginTop: 25,
                     padding: 10
                 }}
             >
@@ -251,27 +251,29 @@ const HomeScreen = () => {
 
             <Text style={{ textAlign: 'justify', margin: 10 }}>Welcome to <Text style={{ fontWeight: 'bold' }}>FeeMaster</Text>. Calculate and compare <Text style={{ fontWeight: 'bold' }}>CASH-OUT</Text> charge/s of all popular mobile banking providers in Bangladesh.</Text>
 
-            <Text style={{ textAlign: 'justify', margin: 10 }}>Welcome to <Text style={{ fontWeight: 'bold' }}>FeeMaster</Text>. বাংলাদেশের সকল জনপ্রিয় মোবাইল ব্যাংকিং প্রদানকারীদের ক্যাশ-আউট চার্জ/চার্জগুলি গণনা এবং তুলনা করুন।</Text>
+            <Text style={{ textAlign: 'justify', margin: 10 }}>বাংলাদেশের সকল জনপ্রিয় মোবাইল ব্যাংকিং প্রদানকারীদের ক্যাশ-আউট চার্জ গণনা এবং তুলনা করুন।</Text>
 
 
-            <View style={{ display: 'flex', alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', margin: 10, marginBottom: 30 }}>
+            <View style={{ display: 'flex', alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', margin: 10, marginBottom: 0 }}>
                 <Text style={styles.cashout}>CASH OUT AMOUNT</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Ex: 1000"
-                    keyboardType="numeric"
-                    maxLength={10}
-                    onChangeText={(amount) => setAmount(+amount)}
-                />
+                <KeyboardAvoidingView>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Ex: 1000"
+                        keyboardType="numeric"
+                        maxLength={10}
+                        onChangeText={(amount) => setAmount(+amount)}
+                    />
+                </KeyboardAvoidingView>
             </View>
 
             <View>
                 <View style={styles.headerContainer}>
                     <Text style={styles.image}></Text>
-                    <Text style={styles.header}>Charge</Text>
-                    <Text style={styles.header}>Amount</Text>
+                    <Text style={[styles.header, { width: 75 }]}>Rate</Text>
+                    <Text style={[styles.header, { width: 75 }]}>Fee</Text>
+                    <Text style={[styles.header, { width: 75 }]}>Receive</Text>
                     <Text style={styles.header}>Payment</Text>
-                    <Text style={styles.header}>Payable</Text>
                 </View>
                 {
                     paymentType.map((item, index) => {
@@ -285,17 +287,19 @@ const HomeScreen = () => {
 
                                 <Text style={styles.charge}>{item.charge} %</Text>
 
-                                <Text style={styles.charge}>{item.charge * amount / 100}</Text>
+                                <Text style={styles.charge}>{(item.charge * amount / 100).toFixed(2)}</Text>
 
-                                <Text style={styles.charge}>{amount - item.charge * amount / 100}</Text>
+                                <Text style={styles.charge}>{(amount - item.charge * amount / 100).toFixed(2)}</Text>
 
-                                <Text style={styles.charge}>{amount + item.charge * amount / 100}</Text>
+                                <Text style={styles.charge}>{(amount + item.charge * amount / 100).toFixed(2)}</Text>
                             </View>
                         )
                     })
                 }
             </View>
-
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={{ color: '#acb0af', fontWeight: 'bold' }}>FeeMaster V.1.0.0</Text>
+            </View>
         </View>
     )
 }
@@ -322,10 +326,11 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#0CBF6F',
         borderRadius: 7,
-        padding: 3,
+        padding: 5,
         fontSize: 20,
         width: 180,
         textAlign: 'right',
+        marginLeft: 10,
     },
     headerContainer: {
         display: 'flex',
